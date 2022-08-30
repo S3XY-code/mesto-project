@@ -1,18 +1,18 @@
 .header {
-    max-width: 880px;
-    padding: 45px 0 0;
-    margin: auto;
-    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  max-width: 880px;
+  padding: 45px 0 0;
+  margin: auto;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media screen and (max-width: 1023.98px) {
+  .header {
+    padding: 45px 72px 0;
   }
-  
-  @media screen and (max-width: 1023.98px) {
-    .header {
-      padding: 45px 72px 0;
-    }
+}
+@media screen and (max-width: 833.98px) {
+  .header {
+    max-width: calc(768px - 144px);
+    padding: 28px 0 0;
   }
-  @media screen and (max-width: 833.98px) {
-    .header {
-      max-width: calc(768px - 144px);
-      padding: 28px 0 0;
-    }
-  }
+}
