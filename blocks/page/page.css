@@ -1,8 +1,8 @@
-.page{
-    max-width: 100%;
-    margin: 0 auto;
-    font-family: "Inter", Arial, Helvetica, sans-serif;
-    background-color:#000000;
-    -webkit-font-smoothing: antialiased;
+.page {
+    background-color: #000;
+    font-family: "inter", Arial, sans-serif;
     -moz-osx-font-smoothing: grayscale;
-}
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    color: #fff;
+  }

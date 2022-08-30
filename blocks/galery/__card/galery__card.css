@@ -1,0 +1,14 @@
+.galery__card {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 282px;
+  height: 361px;
+  background: #fff;
+  padding-bottom: 31px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
