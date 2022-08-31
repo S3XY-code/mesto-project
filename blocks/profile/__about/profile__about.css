@@ -1,5 +1,4 @@
 .profile__about {
-    display: inline-block;
     max-width: 370px;
     width: 100%;
     font-size: 18px;
@@ -20,7 +19,7 @@
       margin: 14px 0 0;
     }
   }
-  
+
   @media screen and (max-width: 500.98px) {
     .profile__about {
       max-width: 250px;
