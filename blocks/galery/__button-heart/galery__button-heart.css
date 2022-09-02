@@ -11,6 +11,11 @@
   margin-right: 21px;
 }
 
+.galery__button-heart:active{
+  background-image: url(../../../images/black-heart.svg);
+}
+
+
 .galery__button-heart:hover {
   opacity: 0.5;
 }
