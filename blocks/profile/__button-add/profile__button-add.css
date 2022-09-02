@@ -3,7 +3,8 @@
     max-height: 50px;
     color: #fff;
     border: 2px solid #fff;
-    padding: 0 auto;
+    border-radius: 2px;
+    padding: 0;
     cursor: pointer;
     background: url(../../../images/Vector.svg) center no-repeat #000;
     height: 50px;
