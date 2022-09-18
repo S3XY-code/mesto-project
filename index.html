@@ -22,13 +22,13 @@
             <div class="profile__info">
                 <img src="./images/avatar.svg" alt="Аватар" class="profile__avatar">
                 <div class="profile__text">                    
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <h1 id="profileName" class="profile__name">Жак-Ив Кусто</h1>
                     <button id="openPopupButton" class="profile__button-edit" type="button" aria-label="edit profile"
                     ></button>                    
-                    <p class="profile__about">Исследователь океанов</p>                   
+                    <p id="profileAbout" class="profile__about">Исследователь океанов</p>                   
                 </div>    
             </div>
-            <button class="profile__button-add" type="button" aria-label="add image"></button>
+            <button id="cardButton" class="profile__button-add" type="button" aria-label="add image"></button>
         </section>
 
         <section class="galery">
@@ -73,17 +73,46 @@
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
 
-    <div id="popup" class="popup">
+    <div class="popup" id="user">
         <div class="popup__container">
-          <button id="closePopupButton" class="popup__close-icon" type="button" title="Закрыть"></button>
+          <button class="popup__close-icon" type="button" title="Закрыть"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__form" name="Profile-edit">
-            <input class="popup__input" type="text" name="Profile-title" value="Жак-Ив Кусто" aria-label="Название профиля">
-            <input class="popup__input" type="text" name="Profile-subtitle" value="Исследователь океана" aria-label="Описание профиля">
+          <form class="popup__form" name="profileEdit">
+            <input id="popupName" class="popup__input" type="text" name="profileTitle" value="Жак-Ив Кусто" aria-label="Название профиля">
+            <input id="popupAbout" class="popup__input" type="text" name="profileSubtitle" value="Исследователь океана" aria-label="Описание профиля">
             <button class="popup__save-button" type="submit" title="Сохранить">Сохранить</button>
           </form>
         </div>
     </div>
+
+    <div class="popup" id="card">
+        <div class="popup__container">
+          <button class="popup__close-icon" type="button" title="Закрыть"></button>
+          <h3 class="popup__title">Новое место</h3>
+          <form class="popup__form" name="сardEdit">
+            <input id="popupName" class="popup__input" type="text" name="cardTitle" value="Название" aria-label="Название профиля">
+            <input id="popupAbout" class="popup__input" type="text" name="cardSubtitle" value="Ссылка на картинку" aria-label="Описание профиля">
+            <button class="popup__save-button" type="submit" title="Сохранить">Создать</button>
+          </form>
+        </div>
+    </div>
+
+    <div class="popup" id="image">
+        <div class="popup__image-container">
+          <button class="popup__button-close" type="button" aria-label="close popup"></button>
+          <img class="popup__image" src="" alt="пейзаж">
+          <h2 class="popup__text"></h2>
+        </div>
+    </div>
+
+    <template id="galery-card">
+        <li class="galery__card">
+          <button class="galery__delet"></button>
+          <img src="" alt="" class="galery__image">
+          <h2 class="galery__title"></h2>
+          <button class="galery__button-heart" type="button" aria-label="like"></button>
+        </li>
+      </template>
     
 </body>
 </html>

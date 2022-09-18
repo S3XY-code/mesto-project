@@ -23,6 +23,7 @@
 @import url(../blocks/galery/__image/galery__image.css);
 @import url(../blocks/galery/__title/galery__title.css);
 @import url(../blocks/galery/__button-heart/galery__button-heart.css);
+@import url(../blocks/galery/__delet/galery__delet.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
