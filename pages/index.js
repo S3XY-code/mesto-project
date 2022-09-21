@@ -1,10 +1,8 @@
-const popup = document.querySelector('.popup');
+const popupAll = document.querySelectorAll('.popup');
 const popupUser = document.querySelector('#user');
 const popupCard = document.querySelector('#card');
-const openPopupButton = document.querySelector('#openPopupButton');
-const userClose = document.querySelector('#userClose');
-const cardClose = document.querySelector('#cardClose');
-const cardButton = document.querySelector('#cardButton');
+const openPopupButton = document.querySelector('.profile__button-edit');
+const cardButton = document.querySelector('.profile__button-add');
 const formUser = document.forms.profileEdit;
 const formCard = document.forms.cardEdit;
 const profileName = document.querySelector('.profile__name')
@@ -16,36 +14,35 @@ const galeryCard = document.querySelector('#galery-card').content;
 const galeryContainer = document.querySelector('.galery__grid-container');
 const allForms = document.forms;
 
-
 const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 //! ОТКРЫВАЕТ POPUP
-function openPopup() {
+function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
@@ -57,6 +54,20 @@ function closePopup(popup) {
     item.textContent = '';
   });
 }
+
+//! ЗАКРЫВВАЕТ POPUP ОКНА ПРИ НАЖАТИ НА КРЕСТИК ИЛИ НА ПРОСТРАНСТВО ВОКРУГ или на кнопку ESC\
+window.addEventListener('click', function (e) {
+  if (e.target.classList.contains('popup__button-close') || e.target.classList.contains('popup')) {
+    closePopup(e.target.closest('.popup'));
+  }
+});
+window.addEventListener('keydown', function (e) {
+  popupAll.forEach(function (item) {
+    if (e.key === 'Escape') {
+      closePopup(item);
+    }
+  });
+});
 
 //! ОТКРЫТИЕ POPUP ДЛЯ РЕДОКТИРОВАНИЯ ПРОФИЛЯ
 openPopupButton.addEventListener('click', function () {
@@ -82,18 +93,6 @@ formUser.addEventListener('submit', function (event) {
       profileAbout.textContent = formUser.profileSubtitle.value;
     }
     closePopup(popupUser);
-  });
-
-  //! ДОБАВЛЯЕТ НОВЫЕ КАРТЫ В ГАЛЕРЕЮ
-formCard.addEventListener('submit', function (event) {
-    event.preventDefault();
-    if (formCard.profileTitle.value !== '' && formCard.profileSubtitle.value !== '') {
-      addCard(createCard(formCard.profileTitle.value, formCard.profileSubtitle.value), galeryContainer);
-    }
-    formCard.profileTitle.value = "";
-    formCard.profileSubtitle.value = "";
-  
-    closePopup(popupCard);
   });
 
   //! СОЗДАЕТ ЗАГОТОВКУ КАРТЫ
@@ -123,17 +122,15 @@ function addCard(card, container) {
   container.prepend(card);
 }
 
-//! ЗАКРЫВВАЕТ POPUP ОКНА ПРИ НАЖАТИ НА КРЕСТИК ИЛИ НА ПРОСТРАНСТВО ВОКРУГ или на кнопку ESC\
-window.addEventListener('click', function (e) {
-  if (e.target.classList.contains('popup__button-close') || e.target.classList.contains('popup')) {
-    closePopup(e.target.closest('.popup'));
-  }
-});
-window.addEventListener('keydown', function (e) {
-  popupAll.forEach(function (item) {
-    if (e.key === 'Escape') {
-      closePopup(item);
+  //! ДОБАВЛЯЕТ НОВЫЕ КАРТЫ В ГАЛЕРЕЮ
+  formCard.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (formCard.profileTitle.value !== '' && formCard.profileSubtitle.value !== '') {
+      addCard(createCard(formCard.profileTitle.value, formCard.profileSubtitle.value), galeryContainer);
     }
+    formCard.profileTitle.value = "";
+    formCard.profileSubtitle.value = "";
+  
+    closePopup(popupCard);
   });
-});
 
