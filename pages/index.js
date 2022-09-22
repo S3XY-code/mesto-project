@@ -48,13 +48,13 @@ function openPopup(popup) {
 }
 
 //! ЗАКРЫВАЕТ POPUP
-function closePopup(popup) {
-  const allError = document.querySelectorAll('.form__input-error');
-  popup.classList.remove('popup_opened');
-  allError.forEach(function (item) {
-    item.textContent = '';
-  });
-}
+// function closePopup(popup) {
+//   const allError = document.querySelectorAll('.form__input-error');
+//   popup.classList.remove('popup_opened');
+//   allError.forEach(function (item) {
+//     item.textContent = '';
+//   });
+// }
 
 //! ЗАКРЫВАЕТ POPUP ОКНА ПРИ НАЖАТИ НА КРЕСТИК ИЛИ НА ПРОСТРАНСТВО ВОКРУГ или на кнопку ESC\
 window.addEventListener('click', function (e) {
@@ -68,7 +68,7 @@ window.addEventListener('keydown', function (e) {
       closePopup(item);
     }
   });
-});
+});//
 
 //! ОТКРЫТИЕ POPUP ДЛЯ РЕДОКТИРОВАНИЯ ПРОФИЛЯ
 openPopupButton.addEventListener('click', function () {
