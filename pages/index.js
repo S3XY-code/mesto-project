@@ -73,6 +73,8 @@ window.addEventListener('keydown', function (e) {
 //! ОТКРЫТИЕ POPUP ДЛЯ РЕДОКТИРОВАНИЯ ПРОФИЛЯ
 openPopupButton.addEventListener('click', function () {
     openPopup(popupUser);
+    formUser.profileTitle.value = profileName.textContent;
+    formUser.profileSubtitle.value = profileAbout.textContent;
 });
 
 //! ОТКРЫТИЕ POPUP ДЛЯ ДОБАВЛЕНИЯ ФОТО
