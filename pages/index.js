@@ -47,7 +47,7 @@ function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
-//! ЗАКРЫВАЕТ POPUP
+//! ЗАКРЫВАЕТ POPUPs
 // function closePopup(popup) {
 //   const allError = document.querySelectorAll('.form__input-error');
 //   popup.classList.remove('popup_opened');
