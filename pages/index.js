@@ -2,6 +2,7 @@ const popupAll = document.querySelectorAll('.popup');
 const popupUser = document.querySelector('#user');
 const popupCard = document.querySelector('#card');
 const openPopupButton = document.querySelector('.profile__button-edit');
+const closePopup = document.querySelector('.popup__close-icon')
 const cardButton = document.querySelector('.profile__button-add');
 const formUser = document.forms.profileEdit;
 const formCard = document.forms.cardEdit;
@@ -55,9 +56,9 @@ function closePopup(popup) {
   });
 }
 
-//! ЗАКРЫВВАЕТ POPUP ОКНА ПРИ НАЖАТИ НА КРЕСТИК ИЛИ НА ПРОСТРАНСТВО ВОКРУГ или на кнопку ESC\
+//! ЗАКРЫВАЕТ POPUP ОКНА ПРИ НАЖАТИ НА КРЕСТИК ИЛИ НА ПРОСТРАНСТВО ВОКРУГ или на кнопку ESC\
 window.addEventListener('click', function (e) {
-  if (e.target.classList.contains('popup__button-close') || e.target.classList.contains('popup')) {
+  if (e.target.classList.contains('popup__close-icon') || e.target.classList.contains('popup')) {
     closePopup(e.target.closest('.popup'));
   }
 });
