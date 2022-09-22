@@ -50,7 +50,7 @@ function openPopup(popup) {
 //! ЗАКРЫВАЕТ POPUP
 function closePopup(popup) {
   const allError = document.querySelectorAll('.form__input-error');
-  popup.classList.remove('popup_active');
+  popup.classList.remove('popup_opened');
   allError.forEach(function (item) {
     item.textContent = '';
   });
