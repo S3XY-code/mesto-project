@@ -1,3 +1,4 @@
+
 const cards = [
   {
     name: 'Архыз',
@@ -56,17 +57,6 @@ const galeryTemplate = document.querySelector('#galery-card').content;
 
 function popupProfileOpen() {
   popupProfile.classList.add('popup_opened');
-}
-
-function popupProfileClose() {
-  popupProfile.classList.remove('popup_opened');
-}
-
-popupProfileOpenButton.addEventListener('click', popupProfileOpen);
-userCloseBtn.addEventListener('click', popupProfileClose);
-
-function popupCardOpen() {
-  popupCard.classList.add('popup_opened');
 }
 
 function popupCardClose() {
