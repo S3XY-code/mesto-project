@@ -1,136 +1,161 @@
-const popupAll = document.querySelectorAll('.popup');
-const popupUser = document.querySelector('#user');
-const popupCard = document.querySelector('#card');
-const openPopupButton = document.querySelector('.profile__button-edit');
-const cardButton = document.querySelector('.profile__button-add');
-const formUser = document.forms.profileEdit;
-const formCard = document.forms.cardEdit;
-const profileName = document.querySelector('.profile__name')
-const profileAbout = document.querySelector('.profile__about');
-const popupImage = document.querySelector('#image');
-const popupImg = document.querySelector('.popup__image');
-const popupText = document.querySelector('.popup__text');
-const galeryCard = document.querySelector('#galery-card').content;
-const galeryContainer = document.querySelector('.galery__grid-container');
-const allForms = document.forms;
-
-const initialCards = [
+const cards = [
   {
     name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    link: './images/Karachaevsk.jpg'
   },
   {
     name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    link: './images/Karachaevsk.jpg'
   },
   {
     name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    link: './images/Karachaevsk.jpg'
   },
   {
     name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    link: './images/Karachaevsk.jpg'
   },
   {
     name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    link: './images/Karachaevsk.jpg'
   },
   {
     name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    link: './images/Karachaevsk.jpg'
   }
 ];
 
-//! ОТКРЫВАЕТ POPUP
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
+//Profile PopUp
+
+const popupProfile = document.querySelector('#user');
+const popupProfileOpenButton = document.querySelector('.profile__button-edit');
+const userCloseBtn = document.querySelector('#userCloseBtn');
+const popupProfileForm = popupProfile.querySelector('#popupProfileForm');
+const popupUserName = popupProfileForm.querySelector('#popupUserName');
+const popupUserAbout = popupProfileForm.querySelector('#popupUserAbout');
+
+//Card PopUp
+
+const popupCard = document.querySelector('#card');
+const popupCardOpenButton = document.querySelector('#addButton');
+const popupCardCloseBtn = document.querySelector('#popupCardCloseBtn');
+const popupCardForm = popupCard.querySelector('.popup__form');
+const placeName = popupCard.querySelector('#placeName');
+const placeUrl = popupCard.querySelector('#placeUrl');
+
+//Actual Profile name and Job
+
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
+
+// Cards
+const galeryContainer = document.querySelector('.galery__grid-container');
+const galeryTemplate = document.querySelector('#galery-card').content;
+
+//Open and Close PopUp
+
+function popupProfileOpen() {
+  popupProfile.classList.add('popup_opened');
 }
 
-//! ЗАКРЫВАЕТ POPUP
-function closePopup(popup) {
-  const allError = document.querySelectorAll('.form__input-error');
-  popup.classList.remove('popup_active');
-  allError.forEach(function (item) {
-    item.textContent = '';
-  });
+function popupProfileClose() {
+  popupProfile.classList.remove('popup_opened');
 }
 
-//! ЗАКРЫВВАЕТ POPUP ОКНА ПРИ НАЖАТИ НА КРЕСТИК ИЛИ НА ПРОСТРАНСТВО ВОКРУГ или на кнопку ESC\
-window.addEventListener('click', function (e) {
-  if (e.target.classList.contains('popup__button-close') || e.target.classList.contains('popup')) {
-    closePopup(e.target.closest('.popup'));
-  }
-});
-window.addEventListener('keydown', function (e) {
-  popupAll.forEach(function (item) {
-    if (e.key === 'Escape') {
-      closePopup(item);
-    }
-  });
-});
+popupProfileOpenButton.addEventListener('click', popupProfileOpen);
+userCloseBtn.addEventListener('click', popupProfileClose);
 
-//! ОТКРЫТИЕ POPUP ДЛЯ РЕДОКТИРОВАНИЯ ПРОФИЛЯ
-openPopupButton.addEventListener('click', function () {
-    openPopup(popupUser);
-});
-
-//! ОТКРЫТИЕ POPUP ДЛЯ ДОБАВЛЕНИЯ ФОТО
-cardButton.addEventListener('click', function () {
-    openPopup(popupCard);
-});
-
-//! ДОБАВЛЯЕТ НОВЫЕ 6 КАРТ ИЗ МАСИВА "initialCards"
-galeryContainer.innerHTML = "";
-for (let i = 0; i < initialCards.length; ++i) {
-  addCard(createCard(initialCards[i].name, initialCards[i].link), galeryContainer);
+function popupCardOpen() {
+  popupCard.classList.add('popup_opened');
 }
 
-//! РЕДАКТИРУЕТ ДАННЫЕ "О СЕБЕ" В ПРОФИЛЕ
-formUser.addEventListener('submit', function (event) {
-    event.preventDefault();
-    if (formUser.profileTitle.value !== '' && formUser.profileSubtitle.value !== '') {
-      profileName.textContent = formUser.profileTitle.value;
-      profileAbout.textContent = formUser.profileSubtitle.value;
-    }
-    closePopup(popupUser);
-  });
+function popupCardClose() {
+  popupCard.classList.remove('popup_opened');
+}
 
-  //! СОЗДАЕТ ЗАГОТОВКУ КАРТЫ
+popupCardOpenButton.addEventListener('click', popupCardOpen);
+popupCardCloseBtn.addEventListener('click', popupCardClose);
+
+////Actual Profile name and Job
+
+
+function formSubmitActualName() {
+  popupUserAbout.value = profileAbout.textContent;
+  popupUserName.value = profileName.textContent;
+}
+
+function formSubmitHandler (evt) {
+  evt.preventDefault(); 
+  profileAbout.textContent = popupUserAbout.value;
+  profileName.textContent = popupUserName.value;
+  popupProfile.classList.remove('popup_opened');
+  popupCard.classList.remove('popup_opened');
+}
+
+popupProfileForm.addEventListener('submit', formSubmitHandler);
+popupCardForm.addEventListener('submit', formSubmitHandler);
+
+
+//Likes
+
+
+//let likeButton = document.querySelector('#likeButton');
+
+
+//function GetLike (evt) {
+  //evt.target.classList.toggle('card__like-button_active');
+//}
+
+//likeButton.addEventListener('click', GetLike);
+
+//Add cards
+
 function createCard(name, link) {
-  const cardElement = galeryCard.querySelector('.galery__card').cloneNode(true);
+  const cardElement = galeryTemplate.querySelector('.galery__card').cloneNode(true);
+  cardElement.querySelector('.galery__image').textContent = name;
+  const cardImage = cardElement.querySelector('.galery__image');
+  cardImage.src = link;
+  cardImage.alt = name;
 
-  cardElement.querySelector('.galery__delet').addEventListener('click', function (e) {
-    e.target.closest('.galery__card').remove();
-  });
-  cardElement.querySelector('.galery__image').src = link;
-  cardElement.querySelector('.galery__image').alt = name;
-  cardElement.querySelector('.galery__image').addEventListener('click', function (e) {
+  // cardImage.addEventListener('click', renderCardPopup);
 
-    popupImg.src = e.target.src;
-    popupText.textContent = name;
-    openPopup(popupImage);
-  });
-  cardElement.querySelector('.galery__title').textContent = name;
-  cardElement.querySelector('.galery__button-heart').addEventListener('click', function (e) {
-    e.target.classList.toggle('galery__button-heart_active');
-  });
+  cardElement
+    .querySelector('.galery__button-heart')
+    .addEventListener('click', (evt) => {
+      evt.target.classList.toggle('galery__button-heart_active');
+    });
+
+  //cardElement
+    //.querySelector('.galery__delet')
+    //.addEventListener('click', deleteCard);
+
   return cardElement;
 }
 
-//! ДОБАВЛЯЕТ КАРТУ В ГАЛЕРЕЮ
-function addCard(card, container) {
+function renderCard(card, container) {
   container.prepend(card);
 }
 
-  //! ДОБАВЛЯЕТ НОВЫЕ КАРТЫ В ГАЛЕРЕЮ
-  formCard.addEventListener('submit', function (event) {
-    event.preventDefault();
-    if (formCard.profileTitle.value !== '' && formCard.profileSubtitle.value !== '') {
-      addCard(createCard(formCard.profileTitle.value, formCard.profileSubtitle.value), galeryContainer);
-    }
-    formCard.profileTitle.value = "";
-    formCard.profileSubtitle.value = "";
-  
-    closePopup(popupCard);
-  });
+function renderCards() {
+  cards.forEach((item) =>
+    renderCard(createCard(item.name, item.link), galeryContainer)
+  );
+}
 
+function deleteCard(evt) {
+  const card = evt.target.closest('.card');
+  card.remove();
+}
+
+function addCard(evt) {
+  evt.preventDefault();
+  renderCard(createCard(placeName.value, placeUrl.value), galeryContainer);
+  placeName.value = '';
+  placeUrl.value = '';
+  popupCardClose(popupCard);
+}
+
+popupCard.addEventListener('submit', addCard);
+
+
+renderCards();
