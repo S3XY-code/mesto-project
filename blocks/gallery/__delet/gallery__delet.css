@@ -1,7 +1,7 @@
-.galery__delet{
+.gallery__delet{
   width: 18px;
   height: 19px;
-  background: url(../../../images/) center center no-repeat;
+  background: url(/images/delet.png) center center no-repeat;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -9,6 +9,6 @@
   cursor: pointer;
 }
 
-.galery__delet:hover{
+.gallery__delet:hover{
   opacity: 0.6;
 }

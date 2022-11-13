@@ -7,10 +7,12 @@
     <meta name="author" content="Сергеев Илья">    
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
-    <script src="./pages/index.js" defer></script>
+    <script src="./pages/app.js" defer></script>
 
 </head>
 <body class="page">
+
+<!-- Хэдер -->
 
     <header class="header">
         <img src="./images/logo.svg" alt="Логотип Место Россия" class="header__logo">
@@ -18,6 +20,7 @@
 
     <main class="content">
 
+<!-- Профиль -->
         <section class="profile">
             <div class="profile__info">
                 <img src="./images/avatar.svg" alt="Аватар" class="profile__avatar">
@@ -31,48 +34,19 @@
             <button class="profile__button-add" type="button" aria-label="add image" id="addButton"></button>
         </section>
 
-        <section class="galery">
-            
-            <ul class="galery__grid-container">
-                <!-- <li class="galery__card">
-                    <img src="./images/kara.jpg" alt="" class="galery__image">
-                    <h2 class="galery__title">Карачаевск</h2>
-                    <button class="galery__button-heart" type="button"></button>
-                </li>
-                <li class="galery__card">
-                    <img src="./images/elbrus.jpg" alt="" class="galery__image">
-                    <h2 class="galery__title">Гора Эльбрус</h2>
-                    <button class="galery__button-heart" type="button"></button>
-                </li>
-                <li class="galery__card">
-                    <img src="./images/dombay.jpg" alt="" class="galery__image">
-                    <h2 class="galery__title">Домбай</h2>
-                    <button class="galery__button-heart" type="button"></button>
-                </li>
-                <li class="galery__card">
-                    <img src="./images/elbrus.jpg" alt="" class="galery__image">
-                    <h2 class="galery__title">Гора Эльбрус</h2>
-                    <button class="galery__button-heart" type="button"></button>
-                </li>
-                <li class="galery__card">
-                    <img src="./images/dombay.jpg" alt="" class="galery__image">
-                    <h2 class="galery__title">Домбай</h2>
-                    <button class="galery__button-heart" type="button"></button>
-                </li>
-                <li class="galery__card">
-                    <img src="./images/kara.jpg" alt="" class="galery__image">
-                    <h2 class="galery__title">Карачаево-Черкесия</h2>
-                    <button class="galery__button-heart" type="button"></button>
-                </li> -->
-            </ul> 
-               
+<!-- Галерея -->
+        <section class="gallery">           
+            <ul class="gallery__grid-container"></ul>               
         </section>
 
     </main>
+
+<!-- Подвал -->
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
 
+<!-- Попап профиля -->
     <div class="popup" id="user">
         <div class="popup__container">
           <button class="popup__close-icon" type="button" title="Закрыть" id="userCloseBtn"></button>
@@ -84,19 +58,19 @@
           </form>
         </div>
     </div>
-
+<!-- Попап карточки -->
     <div class="popup" id="card">
         <div class="popup__container">
           <button class="popup__close-icon" type="button" title="Закрыть" id="popupCardCloseBtn"></button>
           <h3 class="popup__title">Новое место</h3>
-          <form class="popup__form" name="сardEdit">
+          <form class="popup__form" name="cardEdit">
             <input id="placeName" class="popup__input" type="text" name="cardTitle" value="Название" aria-label="Название профиля">
             <input id="placeUrl" class="popup__input" type="text" name="cardSubtitle" value="Ссылка на картинку" aria-label="Описание профиля">
             <button class="popup__save-button" type="submit" title="Сохранить">Создать</button>
           </form>
         </div>
     </div>
-
+<!-- Попап с картинкой -->
     <div class="popup" id="image">
         <div class="popup__image-container">
           <button class="popup__close-icon" type="button" aria-label="close popup"></button>
@@ -104,15 +78,15 @@
           <h2 class="popup__text"></h2>
         </div>
     </div>
-
-    <template id="galery-card">
-        <li class="galery__card">
-          <button class="galery__delet"></button>
-          <img src="" alt="" class="galery__image">
-          <h2 class="galery__image"></h2>
-          <button class="galery__button-heart" type="button" aria-label="like"></button>
+<!-- Шаблон карточки -->
+    <template id="gallery-card">
+        <li class="gallery__card">
+          <button class="gallery__delet"></button>
+          <img src="" alt="" class="gallery__image">
+          <h2 class="gallery__title"></h2>
+          <button class="gallery__button-heart" type="button" aria-label="like"></button>
         </li>
-      </template>
+    </template>
     
 </body>
 </html>
