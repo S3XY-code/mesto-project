@@ -6,11 +6,11 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .popup__image{
     align-self: flex-start;
     width: 240px;
     height: 299px;
     object-fit:cover;
   }
-}
+} */

@@ -1,37 +1,12 @@
-//! Массив с карточками
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-    ];
-
-const profileEdit = document.forms.profileEdit;
-const cardEdit = document.forms.cardEdit;
+const formUser = document.forms.formUser;
+const formCard = document.forms.formCard;
 const popupUser = document.querySelector('#user');
 const popupCard = document.querySelector('#card');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
+const profileBtEdit = document.querySelector('.profile__button-edit');
+const cardBtnAdd = document.querySelector('.profile__button-add');
+const popupAll = document.querySelectorAll('.popup');
 
 
 //! Функция открывающая попап
@@ -44,12 +19,8 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-const profileBtEdit = document.querySelector('.profile__button-edit');
-const cardBtnAdd = document.querySelector('.profile__button-add');
-const popupAll = document.querySelectorAll('.popup');
-
 //! Закрываем попап
-window.addEventListener('click', function (e) {
+document.addEventListener('click', function (e) {
   if (e.target.classList.contains('popup__close-icon') || e.target.classList.contains('popup')) {
     closePopup(e.target.closest('.popup'));
   }
@@ -63,17 +34,16 @@ cardBtnAdd.addEventListener('click', function () {
 //! Кнопка редактирования профиля
 profileBtEdit.addEventListener('click', function () {
   openPopup(popupUser);
-  profileEdit.profileTitle.value = profileName.textContent;
-  profileEdit.profileSubtitle.value = profileAbout.textContent;
+  formUser.profileTitle.value = profileName.textContent;
+  formUser.profileSubtitle.value = profileAbout.textContent;
 });
 
 //! Редактируем данные профиля
-profileEdit.addEventListener('submit', function (event) {
+formUser.addEventListener('submit', function (event) {
   event.preventDefault();
-  if (profileEdit.profileTitle.value !== '' && profileEdit.profileSubtitle.value !== '') {
-    profileName.textContent = profileEdit.profileTitle.value;
-    profileAbout.textContent = profileEdit.profileSubtitle.value;
-  }
+  profileName.textContent = formUser.profileTitle.value;
+  profileAbout.textContent = formUser.profileSubtitle.value;
+
   closePopup(popupUser);
 });
 
@@ -93,7 +63,7 @@ function createCard(name, link) {
   cardElement.querySelector('.gallery__image').alt = name;
   cardElement.querySelector('.gallery__image').addEventListener('click', function (e) {
 
-    popupImg.src = e.target.src;
+    popupImg.src = link;
     popupText.textContent = name;
     openPopup(popupImage);
   });
@@ -118,13 +88,13 @@ for (let i = 0; i < initialCards.length; ++i) {
 }
 
 //! Добавляем новые карты в галерею
-cardEdit.addEventListener('submit', function (event) {
+formCard.addEventListener('submit', function (event) {
   event.preventDefault();
-  if (cardEdit.cardTitle.value !== '' && cardEdit.cardSubtitle.value !== '') {
-    addCard(createCard(cardEdit.cardTitle.value, cardEdit.cardSubtitle.value), galleryContainer);
+  if (formCard.cardTitle.value !== '' && formCard.cardSubtitle.value !== '') {
+    addCard(createCard(formCard.cardTitle.value, formCard.cardSubtitle.value), galleryContainer);
   }
-  cardEdit.cardTitle.value = "";
-  cardEdit.cardSubtitle.value = "";
+  formCard.reset();
+  formCard.reset();
 
   closePopup(popupCard);
 });
