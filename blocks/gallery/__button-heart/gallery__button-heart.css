@@ -1,4 +1,4 @@
-.galery__button-heart {
+.gallery__button-heart {
   background-color: transparent;
   border: none;
   width: 22px;
@@ -11,11 +11,6 @@
   margin-right: 21px;
 }
 
-.galery__button-heart:active{
-  background-image: url(../../../images/black-heart.svg);
-}
-
-
-.galery__button-heart:hover {
+.gallery__button-heart:hover {
   opacity: 0.5;
 }

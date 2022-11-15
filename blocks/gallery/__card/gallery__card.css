@@ -1,4 +1,4 @@
-.galery__card {
+.gallery__card {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -7,5 +7,6 @@
   box-sizing: border-box;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
