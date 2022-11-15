@@ -8,7 +8,6 @@ const profileBtEdit = document.querySelector('.profile__button-edit');
 const cardBtnAdd = document.querySelector('.profile__button-add');
 const popupAll = document.querySelectorAll('.popup');
 
-
 //! Функция открывающая попап
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -20,11 +19,13 @@ function closePopup(popup) {
 }
 
 //! Закрываем попап
-document.addEventListener('click', function (e) {
-  if (e.target.classList.contains('popup__close-icon') || e.target.classList.contains('popup')) {
-    closePopup(e.target.closest('.popup'));
-  }
-});
+popupAll.forEach(function (popup) {
+  popup.addEventListener('click', function(e){
+    if (e.target.classList.contains('popup__close-icon') || e.target.classList.contains('popup')) {
+      closePopup(e.target.closest('.popup'));
+    }
+  })
+})
 
 //! Кнопка добавления карточки
 cardBtnAdd.addEventListener('click', function () {
@@ -65,6 +66,7 @@ function createCard(name, link) {
 
     popupImg.src = link;
     popupText.textContent = name;
+    popupImg.alt = (name + ".");
     openPopup(popupImage);
   });
   cardElement.querySelector('.gallery__title').textContent = name;
@@ -93,7 +95,6 @@ formCard.addEventListener('submit', function (event) {
   if (formCard.cardTitle.value !== '' && formCard.cardSubtitle.value !== '') {
     addCard(createCard(formCard.cardTitle.value, formCard.cardSubtitle.value), galleryContainer);
   }
-  formCard.reset();
   formCard.reset();
 
   closePopup(popupCard);
