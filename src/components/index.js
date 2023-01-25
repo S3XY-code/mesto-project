@@ -29,9 +29,10 @@ formCard.addEventListener('submit', function (event) {
     if (formCard.cardTitle.value !== '' && formCard.cardSubtitle.value !== '') {
       addCard(createCard(formCard.cardTitle.value, formCard.cardSubtitle.value), galleryContainer);
     }
-    formCard.reset();
   
     closePopup(popupCard);
+
+    formCard.reset();
   });
 
 //! Кнопка добавления карточки
@@ -55,13 +56,5 @@ popupAll.forEach(function (popup) {
     }
   })
 })
-
-window.addEventListener('keydown', function (e) {
-  popupAll.forEach(function (item) {
-    if (e.key === 'Escape') {
-      closePopup(item);
-    }
-  });
-});
 
   enableValidation(settings);
