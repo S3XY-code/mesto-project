@@ -1,0 +1,23 @@
+.profile__button-edit {
+    bottom: 10px;
+    width: 24px;
+    height: 24px;
+    background: #000;
+    border: 1px solid #fff;
+    align-self: center;
+    background-image: url(../../../images/pensel.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .profile__button-edit:hover {
+    opacity: 0.6;
+  }
+  
+  @media screen and (max-width: 858.98px) {
+    .profile__button-edit {
+      width: 18px;
+      height: 18px;
+      background-size: 7.5px 7.5px;
+    }
+  }

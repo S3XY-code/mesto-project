@@ -1,0 +1,12 @@
+.form__submit_disabled{
+  border: 1px solid #000;
+  background: #fff;
+  color: rgba(0, 0, 0, 1);
+}
+
+.form__submit_disabled:hover{
+  border: 1px solid #000;
+  background: #fff;
+  color: rgba(0, 0, 0, 1);
+  cursor:auto;
+}

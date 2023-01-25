@@ -1,0 +1,13 @@
+.gallery__title {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  margin: 0;
+  color: black;
+  align-self: flex-end;
+  margin-left: 21px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-basis: 218px;
+}
