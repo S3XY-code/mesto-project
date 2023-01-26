@@ -6,6 +6,7 @@ import { initialCards } from "./card-container.js";
 import { createCard, addCard } from "./card.js";
 import { closePopup, openPopup } from "./utils.js";
 import { enableValidation } from "./validate.js";
+import { btnDisable } from "./validate.js";
 import {enableValidationSettings as settings} from "./constants.js";
 
 //! Добавляем новые карты из массива
@@ -37,7 +38,9 @@ formCard.addEventListener('submit', function (event) {
 
 //! Кнопка добавления карточки
 cardBtnAdd.addEventListener('click', function () {
+  const SubmButton = popupCard.querySelector(settings.submitButtonSelector);
   openPopup(popupCard);
+  btnDisable(SubmButton, settings);
 });
 
 //! Кнопка редактирования профиля

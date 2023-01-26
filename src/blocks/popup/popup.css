@@ -1,5 +1,5 @@
 .popup {
-  display: none;
+  display: flex;
   position: fixed;
   left: 0;
   top: 0;
@@ -11,4 +11,7 @@
   justify-content: center;
   font-family: 'Inter';
   align-items: center;
+  visibility: hidden;
+  transition: visibility .6s, opacity .3s ease-in-out;
+  opacity: 0;
 }
