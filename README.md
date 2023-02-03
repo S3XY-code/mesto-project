@@ -1,4 +1,4 @@
-# Проект: [Mesto](https://github.com/S3XY-code/mesto-project/)
+# Проект: [Mesto](https://s3xy-code.github.io/mesto-project/)
 
 Место - страница, где люди могут делиться фотографиями, создавать свой профиль, редактировать данные и ставить лайки.
 
