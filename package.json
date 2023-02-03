@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/S3XY-code/mesto-project/issues"
   },
-  "homepage": "https://github.com/S3XY-code/mesto-project/",
+  "homepage": "https://s3xy-code.github.io/mesto-project/",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
