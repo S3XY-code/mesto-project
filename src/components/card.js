@@ -22,7 +22,7 @@ import {deleteCard, addLike, deleteLike} from "./api.js";
       cardTrashBtn.addEventListener('click', function () {
         deleteCard(data._id)
           .then(() => {
-            deleteCard(cardTrashBtn);
+            removeCard(cardTrashBtn);
           })
           .catch((err) => {
             console.error(err)
@@ -76,3 +76,8 @@ import {deleteCard, addLike, deleteLike} from "./api.js";
 export function addCard(card, container) {
   container.prepend(card);
   }
+
+  function removeCard(card) {
+    const element = card.closest('.gallery__card');
+    element.remove();
+  };

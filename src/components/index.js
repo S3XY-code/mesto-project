@@ -76,7 +76,7 @@ function addNewCard (evt) {
   createNewCard(inputUrl.value, inputPopupName.value)
     .then((data) => {
       galleryContainer.prepend(createCard(data, user));
-      evt.target.reset();
+
       closePopup(popupCard);
     })
     .catch((err) => {
@@ -104,7 +104,9 @@ cardBtnAdd.addEventListener('click', function () {
 // Listener for open Avatar popup
 
 profileAvatar.addEventListener('click', function() {
+  const submButton = avatarPopup.querySelector(settings.submitButtonSelector);
   openPopup(avatarPopup);
+  btnDisabled(submButton, settings);
 });
 
 //! Закрываем попап
