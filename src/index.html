@@ -21,7 +21,10 @@
 <!-- Профиль -->
         <section class="profile">
             <div class="profile__info">
-                <img src="<%=require('./images/avatar.svg')%>" alt="Аватар" class="profile__avatar">
+                <div class="profile__avatar-group">
+                    <img src="<%=require('./images/pen.svg')%>" alt="Карандаш" class="profile__avatar-pen">
+                    <img class="profile__avatar" src="" alt="Аватар">
+                </div>
                 <div class="profile__text">                    
                     <h1 id="profileName" class="profile__name">Жак-Ив Кусто</h1>
                     <button id="openPopupButton" class="profile__button-edit" type="button" aria-label="edit profile"
@@ -78,18 +81,36 @@
 <!-- Попап с картинкой -->
     <div class="popup popup_image" id="image">
         <div class="popup__image-container">
-          <button class="popup__close-icon" type="button" aria-label="close popup"></button>
+          <button class="popup__close-icon" type="button" aria-label="close popup"></button>popupUserName
           <img class="popup__image" src="" alt="">
           <h2 class="popup__text"></h2>
         </div>
     </div>
+
+    <div class="popup popup_avatar">
+        <div class="popup__container">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form class="popup__form popup__form-avatar" name="form-avatar" novalidate>
+            <input class="popup__input" type="url" name="avatar-link" id="avatarLink" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error avatarLink-error"></span>
+            <button class="popup__save-button" type="submit" disabled>Сохранить</button>
+          </form>
+          <button class="popup__close-icon" type="button"></button>
+        </div>
+    </div>
+
 <!-- Шаблон карточки -->
     <template id="gallery-card">
         <li class="gallery__card">
           <button class="gallery__delet"></button>
           <img src="" alt="" class="gallery__image">
-          <h2 class="gallery__title"></h2>
-          <button class="gallery__button-heart" type="button" aria-label="like"></button>
+          <div class="gallery__group">
+            <h2 class="gallery__title"></h2>
+            <div class="gallery__like-num-group">
+                <button class="gallery__button-heart" type="button" aria-label="like"></button>
+                <p class="gallery__like-num"></p>
+            </div>
+          </div>             
         </li>
     </template>
     

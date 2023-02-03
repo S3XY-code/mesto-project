@@ -1,30 +1,78 @@
 import { openPopup } from "./utils.js";
-import {popupImage, popupImg, popupText, galleryCard} from "./constants.js";
+import {popupImage, popupText, popupImg, galleryCard} from "./constants.js";
+import {deleteCard, addLike, deleteLike} from "./api.js";
 
-//! Создаем карту
-export function createCard(name, link) {
+  export const createCard = (data, user) => {
     const cardElement = galleryCard.querySelector('.gallery__card').cloneNode(true);
+    const cardImage = cardElement.querySelector('.gallery__image');
+    const cardTitle = cardElement.querySelector('.gallery__title');
+    const cardTrashBtn = cardElement.querySelector('.gallery__delet');
+    const cardLikeBtn = cardElement.querySelector('.gallery__button-heart');
+    const cardLikeNum = cardElement.querySelector('.gallery__like-num');
   
-    cardElement.querySelector('.gallery__delet').addEventListener('click', function (e) {
-      e.target.closest('.gallery__card').remove();
+    cardImage.src = data.link;
+    cardImage.alt = data.name;
+    cardTitle.textContent = data.name;
+    cardLikeNum.textContent = data.likes.length;
+  
+    // Delete user card's
+  
+    if (user._id === data.owner._id) {
+      cardTrashBtn.classList.add('gallery___delete_type_active');
+      cardTrashBtn.addEventListener('click', function () {
+        deleteCard(data._id)
+          .then(() => {
+            deleteCard(cardTrashBtn);
+          })
+          .catch((err) => {
+            console.error(err)
+          })
+      });
+    }
+  
+    // Active like's on card
+  
+    for (const item of data.likes) {
+      if (item._id.includes(user._id)) {
+        cardLikeBtn.classList.add('gallery__button-heart_active');
+      }
+    }
+  
+    // New like's on card
+  
+    cardLikeBtn.addEventListener('click', function (evt) {
+      if (!evt.target.classList.contains('gallery__button-heart_active')) {
+        addLike(data._id)
+          .then((data) => {
+            evt.target.classList.add('gallery__button-heart_active');
+            cardLikeNum.textContent = data.likes.length;
+          })
+          .catch((err) => {
+            console.error(err);
+          })
+      } else {
+        deleteLike(data._id)
+          .then((data) => {
+            evt.target.classList.remove('gallery__button-heart_active');
+            cardLikeNum.textContent = data.likes.length;
+          })
+          .catch((err) => {
+            console.error(err);
+          })
+      }
     });
-    cardElement.querySelector('.gallery__image').src = link;
-    cardElement.querySelector('.gallery__image').alt = name;
-    cardElement.querySelector('.gallery__image').addEventListener('click', function (e) {
   
-      popupImg.src = link;
-      popupText.textContent = name;
-      popupImg.alt = (name + ".");
+    cardImage.addEventListener('click', function () {
       openPopup(popupImage);
+      popupImg.src = data.link;
+      popupImg.alt = data.name;
+      popupText.textContent = data.name;
     });
-    cardElement.querySelector('.gallery__title').textContent = name;
-    cardElement.querySelector('.gallery__button-heart').addEventListener('click', function (e) {
-      e.target.classList.toggle('gallery__button-heart_active');
-    });
-    return cardElement;
-  }
   
-//! Добавляем карту в контейнер
+    return cardElement;
+  };
+
+  //! Добавляем карту в контейнер
 export function addCard(card, container) {
   container.prepend(card);
   }

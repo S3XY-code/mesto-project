@@ -1,16 +1,20 @@
 .gallery__button-heart {
-  background-color: transparent;
-  border: none;
-  width: 22px;
-  height: 24px;
-  cursor: pointer;
   background-image: url("../../../images/heart.svg");
+
+  margin: 0 auto;
+  width: 22px;
+  height: 19px;
+  
   background-repeat: no-repeat;
-  background-position: top;
-  align-self: flex-end;
-  margin-right: 21px;
+  outline: 0;
+  border: 0;
+  align-self: center;
+  transition: 0.1s linear;
+  cursor: pointer;
 }
 
 .gallery__button-heart:hover {
   opacity: 0.5;
 }
+
+
